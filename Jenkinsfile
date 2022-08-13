@@ -1,19 +1,21 @@
-pipeline {
+    pipeline {
+
     agent any
 
     stages {
-        stage('coping') {
+        stage('compile') {
             steps {
-                sh 'cp -r index.html /var/www/html'
-            }
-        } 
-    stages {
-        stage('restart') {
-            steps {
-                sh 'service httpd restart'
+	          sh 'mvn clean'
+                sh 'mvn compile'
             }
         }
-
-    }
+        stage('test ') {
+            steps {
+                sh 'mvn test'
+            }
+        }
 }
+
+}
+
 
