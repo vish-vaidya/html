@@ -3,19 +3,16 @@
     agent any
 
     stages {
-        stage('compile') {
+        stage('index') {
             steps {
-	          sh 'mvn clean'
-                sh 'mvn compile'
-            }
-        }
-        stage('test ') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+	          sh 'cp -r index.html /var/www/html'
+                sh 'cp -r dev.html /var/www/html'
+                sh 'cp -r qa.html /var/www/html'
+}
 }
 
+                
+  
+
+    }
 }
-
-
